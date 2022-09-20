@@ -1,0 +1,39 @@
+.dialog {
+  &-form,
+  &-action {
+    display: flex;
+  }
+  &-form {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-bottom: 1rem;
+    &-row {
+      flex-direction: row;
+      justify-content: space-between;
+      min-width: 100%;
+      .form-group {
+        padding: 0 0.5rem;
+        max-width: 100%;
+        min-width: 50%;
+      }
+    }
+  }
+  &-action {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

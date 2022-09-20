@@ -1,0 +1,146 @@
+<h1>Agreement</h1>
+<kendo-grid
+  [data]="data"
+  [skip]="gridState.skip"
+  [sort]="gridState.sort"
+  [navigable]="true"
+>
+  <ng-template kendoGridToolbarTemplate let-dataItem="dataItem">
+    <button
+      kendoGridAddCommand
+      icon="plus"
+      title="Add Child"
+      (click)="addHandler(dataItem)"
+    ></button>
+  </ng-template>
+
+  <kendo-grid-command-column title="Actions" [width]="70">
+    <ng-template kendoGridCellTemplate>
+      <button kendoGridAddCommand icon="delete"></button>
+    </ng-template>
+  </kendo-grid-command-column>
+  <kendo-grid-column title="Type" [width]="110">
+    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+      <kendo-autocomplete
+        [value]="dataItem.Type"
+        [data]="typeItems"
+        placeholder="Type to search"
+      >
+      </kendo-autocomplete>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column title="Product" [width]="200">
+    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+      <kendo-autocomplete
+        [value]="dataItem.ProductName"
+        [data]="productItems"
+        placeholder="Type to search"
+      >
+      </kendo-autocomplete>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-command-column title="Estimated Capacity" [width]="150">
+    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+      <kendo-numerictextbox
+        [(ngModel)]="dataItem.EstimateCapacity"
+        [step]="0.1"
+        [spinners]="false"
+      ></kendo-numerictextbox>
+    </ng-template>
+  </kendo-grid-command-column>
+
+  <kendo-grid-command-column title="Actual Capacity" [width]="200">
+    <ng-template
+      kendoGridCellTemplate
+      let-dataItem="dataItem"
+      let-rowIndex="rowIndex"
+    >
+      <section class="flex-grid-column">
+        <kendo-numerictextbox
+          [(ngModel)]="dataItem.ActualCapacity"
+          [step]="0.1"
+          [spinners]="false"
+        ></kendo-numerictextbox>
+        <button
+          mat-icon-button
+          color="primary"
+          class="primary-icon"
+          aria-label="Example icon button with a home icon"
+          (click)="openDialog(dataItem, rowIndex)"
+        >
+          <mat-icon>playlist_add</mat-icon>
+        </button>
+      </section>
+    </ng-template>
+  </kendo-grid-command-column>
+
+  <kendo-grid-command-column title="Sold" [width]="150">
+    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+      <kendo-numerictextbox
+        [(ngModel)]="dataItem.Sold"
+        [step]="0.1"
+        [spinners]="false"
+      ></kendo-numerictextbox>
+    </ng-template>
+  </kendo-grid-command-column>
+
+  <kendo-grid-command-column title="Remaining" [width]="150">
+    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+      <kendo-numerictextbox
+        [(ngModel)]="dataItem.Amount"
+        [step]="0.1"
+        [spinners]="false"
+      ></kendo-numerictextbox>
+    </ng-template>
+  </kendo-grid-command-column>
+
+  <kendo-grid-column title="Unit" [width]="100">
+    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+      <kendo-autocomplete
+        [value]="dataItem.UnitCode"
+        [data]="unitCodeItems"
+        placeholder="Type to search"
+      >
+      </kendo-autocomplete>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-command-column title="Measurement From" [width]="150">
+    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+      <kendo-datepicker [(ngModel)]="dataItem.startDate"></kendo-datepicker>
+    </ng-template>
+  </kendo-grid-command-column>
+
+  <kendo-grid-command-column title="Measurement To" [width]="150">
+    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+      <kendo-datepicker [(ngModel)]="dataItem.endDate"></kendo-datepicker>
+    </ng-template>
+  </kendo-grid-command-column>
+  <div *kendoGridDetailTemplate="let dataItem">
+    <ng-container *ngIf="dataItem.invoices.length > 0">
+      <kendo-grid
+        [data]="dataItem.invoices"
+        [pageSize]="5"
+        [pageable]="true"
+        scrollable="none"
+        (pageChange)="pageChange($event)"
+        [navigable]="true"
+        kendoGridFocusable
+      >
+        <kendo-grid-column field="code" title="Invoice Number" [width]="200">
+        </kendo-grid-column>
+        <kendo-grid-column field="type" title="Type" [width]="200">
+        </kendo-grid-column>
+        <kendo-grid-column
+          field="amount"
+          title="Amount"
+          format="{0:c}"
+          [width]="200"
+        >
+        </kendo-grid-column>
+      </kendo-grid>
+    </ng-container>
+  </div>
+</kendo-grid>
