@@ -61,8 +61,10 @@ export class OverviewDialog {
   }
 
   private _sortList(a: Adjustment, b: Adjustment): number {
-    if (a.FromDate.getTime() < b.FromDate.getTime()) return 1;
-    if (a.FromDate.getTime() > b.FromDate.getTime()) return -1;
+    if (a.FromDate && b.FromDate) {
+      if (a.FromDate.getTime() < b.FromDate.getTime()) return 1;
+      if (a.FromDate.getTime() > b.FromDate.getTime()) return -1;
+    }
     return 0;
   }
 
@@ -73,7 +75,8 @@ export class OverviewDialog {
       Capacity: null,
       Reason: null,
     };
-    this.data.Adjustments.push(newAdjustment);
-    this.data.Adjustments = [].concat(this.data);
+    // this.data.Adjustments.push(newAdjustment);
+    // this.data.Adjustments = [].concat(this.data.Adjustments);
+    this.data.Adjustments = [newAdjustment].concat(this.data.Adjustments);
   }
 }

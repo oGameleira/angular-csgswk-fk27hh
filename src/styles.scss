@@ -82,3 +82,17 @@ my-app > .k-icon.k-i-loading {
   background-color: transparent !important;
   border: none !important;
 }
+
+::ng-deep {
+  .mat-icon-button {
+    &,
+    &:focus,
+    &:hover,
+    &:active {
+      background-color: transparent !important;
+      outline: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
+}
