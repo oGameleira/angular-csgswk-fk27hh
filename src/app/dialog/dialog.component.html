@@ -1,33 +1,8 @@
 <h1 mat-dialog-title>Adjustment</h1>
 <div mat-dialog-content>
   <ng-container *ngIf="formIsDefined">
-    <section [formGroup]="formGroup" class="dialog-form">
-      <section class="dialog-form-row">
-        <mat-form-field appearance="fill" class="form-group">
-          <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="FromDate" />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="form-group">
-          <mat-label>Capacity</mat-label>
-          <input matInput type="number" formControlName="Capacity" />
-        </mat-form-field>
-      </section>
-      <section class="dialog-form-row">
-        <mat-form-field appearance="fill" class="form-group">
-          <mat-label>Comment</mat-label>
-          <input matInput type="string" formControlName="Reason" />
-        </mat-form-field>
-      </section>
-    </section>
     <section>
       <kendo-grid [data]="gridList" [navigable]="true">
-        >
         <ng-template kendoGridToolbarTemplate let-dataItem="dataItem">
           <button
             kendoGridAddCommand
@@ -39,17 +14,43 @@
 
         <kendo-grid-command-column title="From">
           <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-            <mat-label>{{ dataItem.FromDate | date }}</mat-label>
+            <mat-form-field appearance="fill">
+              <mat-label>Choose a date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                [(ngModel)]="dataItem.FromDate"
+              />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
           </ng-template>
         </kendo-grid-command-column>
+
         <kendo-grid-command-column title="Capacity">
           <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-            <mat-label>{{ dataItem.Capacity | number }}</mat-label>
+            <mat-form-field appearance="fill">
+              <mat-label>Input</mat-label>
+              <input matInput [(ngModel)]="dataItem.Capacity" type="number" />
+            </mat-form-field>
           </ng-template>
         </kendo-grid-command-column>
-        <kendo-grid-command-column title="Capacity">
+
+        <kendo-grid-command-column title="Reason">
           <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-            <mat-label>{{ dataItem.Reason }}</mat-label>
+            <mat-form-field appearance="fill">
+              <mat-label>Reason</mat-label>
+              <select matNativeControl required [(ngModel)]="dataItem.Reason">
+                <option value="Reson1">Reson 1</option>
+                <option value="Reson2">Reson 2</option>
+                <option value="Reson3">Reson 3</option>
+                <option value="Reson4">Reson 4</option>
+              </select>
+            </mat-form-field>
           </ng-template>
         </kendo-grid-command-column>
       </kendo-grid>

@@ -59,8 +59,8 @@ export class AppComponent {
 
   openDialog(item?: any, rowIndex?: number): void {
     const dialogRef = this.dialog.open(OverviewDialog, {
-      minWidth: '400px',
-      maxWidth: '600px',
+      minWidth: '800px',
+      maxWidth: '800px',
       minHeight: '50vh',
       maxHeight: '100vh',
       data: {

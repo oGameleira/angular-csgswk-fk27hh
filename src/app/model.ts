@@ -53,7 +53,7 @@ export class Adjustment {
   FromDate?: Date;
   Capacity?: Number;
   Reason?: String;
-  Adjustments?: Adjustment[]
+  Adjustments?: Adjustment[];
 }
 
 export class SiteMesurement {
@@ -83,19 +83,19 @@ export const siteMesurement: SiteMesurement[] = [
         Id: 1,
         FromDate: new Date('2020-12-02'),
         Capacity: 1000,
-        Reason: 'Test 1',
+        Reason: 'Reson1',
       },
       {
         Id: 1,
         FromDate: new Date('2020-12-02'),
         Capacity: 2000,
-        Reason: 'Test 2',
+        Reason: 'Reson2',
       },
       {
         Id: 1,
         FromDate: new Date('2020-12-02'),
         Capacity: 2000,
-        Reason: 'Test 3',
+        Reason: 'Reson3',
       },
     ],
     Amount: 10000,
