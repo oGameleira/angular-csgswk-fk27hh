@@ -2,8 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { DialogData } from '../dialog-data';
-import { Adjustment } from '../model';
+import { Adjustment, DialogData } from '../model';
 
 @Component({
   selector: 'overview-dialog',

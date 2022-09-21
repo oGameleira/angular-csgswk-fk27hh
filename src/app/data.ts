@@ -1,4 +1,182 @@
-export const TypeItems: any[] = [
+import { SiteMesurement, Category } from './model';
+
+export const categoryItems: Category[] = [
+  { value: 'APPLES', viewValue: 'APPLES' },
+  { value: 'GRAPES', viewValue: 'GRAPES' },
+  { value: 'NECTARINES', viewValue: 'NECTARINES' },
+  { value: 'PEACHES', viewValue: 'PEACHES' },
+  { value: 'CRP', viewValue: 'CRP' },
+];
+
+export const siteMesurementItems: SiteMesurement[] = [
+  {
+    Id: 1,
+    Type: 'ACM1',
+    Category: 'APPLES',
+    ProductName: 'APPLES BRAEBURN',
+    EstimateCapacity: 100000,
+    ActualCapacity: 90000,
+    Adjustments: [
+      {
+        Id: 1,
+        FromDate: new Date('2020-12-02'),
+        Capacity: 91000,
+        Reason: 'Reson1',
+      },
+      {
+        Id: 1,
+        FromDate: new Date('2020-10-02'),
+        Capacity: 92000,
+        Reason: 'Reson2',
+      },
+      {
+        Id: 1,
+        FromDate: new Date('2019-01-02'),
+        Capacity: 95000,
+        Reason: 'Reson3',
+      },
+    ],
+    Amount: 10000,
+    UnitCode: 'MBF',
+    Sold: 80000,
+    startDate: new Date('2019-12-02'),
+    endDate: new Date('2021-12-01'),
+    invoices: [
+      {
+        id: 1,
+        code: 'INV001',
+        type: 'Sold',
+        amount: 5000.0,
+        date: new Date('2019-14-02'),
+        rate: 1,
+        dolarValue: 4.3,
+      },
+      {
+        id: 1,
+        code: 'INV002',
+        type: 'Sold',
+        amount: 5000.0,
+        date: new Date('2019-14-02'),
+        rate: 2,
+        dolarValue: 4,
+      },
+    ],
+    Agreements: [
+      {
+        Id: 1,
+        Code: 'Agreement 3201',
+        Sold: 10000,
+        UnitCode: 'MBF',
+        Rate: 12312,
+        Amount: 1233,
+        startDate: new Date('2019-14-02'),
+        endDate: new Date('2020-12-02'),
+      },
+      {
+        Id: 2,
+        Code: 'Agreement 3202',
+        Sold: 20000,
+        UnitCode: 'MBF',
+        Rate: 12312,
+        Amount: 1233,
+        startDate: new Date('2020-12-02'),
+        endDate: new Date('2020-12-02'),
+      },
+      {
+        Id: 3,
+        Code: 'Agreement 3203',
+        Sold: 30000,
+        UnitCode: 'MBF',
+        Rate: 12312,
+        Amount: 1233,
+        startDate: new Date('2020-12-02'),
+        endDate: new Date('2020-12-02'),
+      },
+    ],
+  },
+  {
+    Id: 2,
+    Type: 'ADMI',
+    Category: 'APPLES',
+    ProductName: 'APPLES FUJI',
+    EstimateCapacity: 200000,
+    ActualCapacity: 100000,
+    Amount: 10.929,
+    UnitCode: 'MBF',
+    Sold: 2.937834,
+    startDate: new Date('2020-12-02'),
+    endDate: new Date('2021-12-01'),
+  },
+  {
+    Id: 3,
+    Type: 'CIT2',
+    Category: 'APPLES',
+    ProductName: 'APPLES GALA',
+    EstimateCapacity: 300000,
+    ActualCapacity: 333333,
+    Amount: 33410.929,
+    UnitCode: 'MBF',
+    Sold: 244.937834,
+    startDate: new Date('2020-12-02'),
+    endDate: new Date('2021-12-01'),
+  },
+  {
+    Id: 4,
+    Type: 'Z466',
+    Category: 'GRAPES',
+    ProductName: 'GRAPES CAB F',
+    EstimateCapacity: 400000,
+    ActualCapacity: 4444444,
+    Amount: 742310.929,
+    UnitCode: 'MBF',
+    Sold: 22.9834,
+    startDate: new Date('2020-12-02'),
+    endDate: new Date('2021-12-01'),
+  },
+  {
+    Id: 5,
+    Type: 'JAM3',
+    Category: 'GRAPES',
+    ProductName: 'GRAPES CAB S',
+    EstimateCapacity: 500000,
+    ActualCapacity: 555555,
+    Amount: 13450.929,
+    UnitCode: 'MBF',
+    Sold: 27.93834,
+    startDate: new Date('2020-12-02'),
+    endDate: new Date('2021-12-01'),
+  },
+];
+
+/*
+11305 - TAX AREA 0050 - UNINCORP SKAGIT COUNTY
+11344 - TAX AREA 0086C - BAINBRIDGE ISLAND
+10465 - TAX AREA 0090 - UNINCORP JEFFERSON COUNTY
+10551 - TAX AREA 0810 - PORT ORCHARD
+10280 - TAX AREA 112 - UNINCORP FRANKLIN COUNTY
+10114 - TAX AREA 203 UNINCORP CLALLAM COUNTY
+11337 - TAX AREA 435F - UNINCORP LEWIS COUNTY
+11305 - TAX AREA 600 - EVERSON
+10950 - TAX AREA 91 - UNINCORP SKAMANIA COUNTY
+10092 - Tax Area 000 - UNINCORP CLALLAM COUNTY
+*/
+
+/*
+01 - Adams
+02 - Asotin
+03 - Benton
+04 - Chelan
+05 - Clallam
+06 - Clark
+07 - Columbia 
+08 - Cowlitz
+09 - Douglas
+10 - Ferry
+*/
+
+export const typeItems: any[] = [
+  'ACM2',
+  'ACM2',
   'ACM2',
   'ADMI',
   'ACM1',

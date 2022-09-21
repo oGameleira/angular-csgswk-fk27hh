@@ -30,6 +30,20 @@
     </ng-template>
   </kendo-grid-column>
 
+  <kendo-grid-column title="Category" [width]="200">
+    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+      <mat-form-field appearance="fill">
+        <mat-select [(ngModel)]="dataItem.Category">
+          <mat-option
+            [value]="category.value"
+            *ngFor="let category of categoryItems"
+            >{{ category.viewValue }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </ng-template>
+  </kendo-grid-column>
+
   <kendo-grid-column title="Product" [width]="200">
     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
       <kendo-autocomplete
@@ -130,16 +144,20 @@
         [navigable]="true"
         kendoGridFocusable
       >
-        <kendo-grid-column field="code" title="Invoice Number" [width]="200">
+        <kendo-grid-column field="code" title="Invoice Number">
         </kendo-grid-column>
-        <kendo-grid-column field="type" title="Type" [width]="200">
+        <kendo-grid-column field="date" title="Invoice Date">
         </kendo-grid-column>
+        <kendo-grid-column field="type" title="Type"> </kendo-grid-column>
         <kendo-grid-column
           field="amount"
           title="Amount"
           format="{0:c}"
           [width]="200"
         >
+        </kendo-grid-column>
+        <kendo-grid-column field="rate" title="Rate"> </kendo-grid-column>
+        <kendo-grid-column field="dolarValue" title="Dolar Value">
         </kendo-grid-column>
       </kendo-grid>
     </ng-container>
