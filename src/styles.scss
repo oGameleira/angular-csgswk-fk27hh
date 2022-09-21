@@ -83,6 +83,11 @@ my-app > .k-icon.k-i-loading {
   border: none !important;
 }
 
+.link {
+  color: #00f !important;
+  cursor: pointer;
+}
+
 ::ng-deep {
   .mat-icon-button {
     &,

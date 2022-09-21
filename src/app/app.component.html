@@ -144,8 +144,14 @@
         [navigable]="true"
         kendoGridFocusable
       >
-        <kendo-grid-column field="code" title="Invoice Number">
+        <kendo-grid-column title="Invoice Number">
+          <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+            <a class="link" href="#">{{ dataItem.code }}</a>
+          </ng-template>
         </kendo-grid-column>
+
+        <!-- <kendo-grid-column field="code" title="Invoice Number">
+        </kendo-grid-column> -->
         <kendo-grid-column field="date" title="Invoice Date">
         </kendo-grid-column>
         <kendo-grid-column field="type" title="Type"> </kendo-grid-column>
