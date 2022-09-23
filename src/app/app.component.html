@@ -47,11 +47,14 @@
 
   <kendo-grid-column title="Product" [width]="200">
     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-      <!-- <pre>{{productItems | json}}</pre> -->
+      <!-- <pre>{{ productItems | json }}</pre> -->
       <mat-form-field appearance="standard">
         <mat-select [(ngModel)]="dataItem.ProductName">
-          <mat-option [value]="prod" *ngFor="let prod of productItems">
-            {{ prod }}
+          <mat-option
+            [value]="prod.description"
+            *ngFor="let prod of productItems"
+          >
+            {{ prod.description }}
           </mat-option>
         </mat-select>
       </mat-form-field>

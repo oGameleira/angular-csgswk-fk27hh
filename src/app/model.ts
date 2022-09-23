@@ -22,6 +22,8 @@ export class Invoice {
   code?: string;
   type?: string;
   amount?: number;
+  amountSold?: number;
+  amountInvoiced?: number;
   rate?: number;
   dolarValue?: number;
 }
@@ -71,7 +73,40 @@ export interface DialogData {
 }
 
 export interface Category {
-  value: string;
-  viewValue: string;
+  id?: number;
+  value?: string;
+  viewValue?: string;
 }
 
+export class Product {
+  Id?: number;
+  code?: string;
+  description?: string;
+  unitCode?: string;
+  productTypeCode?: string;
+}
+
+export class ProductType {
+  Id?: number;
+  code?: string;
+  description?: string;
+  unitCode?: string;
+}
+
+export class Dimension {
+  Id?: number;
+  code?: string;
+  description?: string;
+}
+
+export class Units {
+  Id?: number;
+  code?: string;
+  description?: string;
+}
+
+export class DimensionXUnits {
+  Id?: number;
+  Dimension?: Dimension;
+  Units?: Units;
+}

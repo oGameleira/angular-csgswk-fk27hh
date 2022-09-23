@@ -8,8 +8,13 @@ import {
 import { State, process } from '@progress/kendo-data-query';
 import { MatDialog } from '@angular/material/dialog';
 
-import { SiteMesurement, DialogData, Category } from './model';
-import { typeItems, siteMesurementItems, categoryItems } from './data';
+import { SiteMesurement, DialogData, Category, Product } from './model';
+import {
+  typeItems,
+  siteMesurementItems,
+  categoryItems,
+  productItems,
+} from './data';
 import { OverviewDialog } from './dialog';
 
 @Component({
@@ -20,13 +25,14 @@ export class AppComponent {
   public data: SiteMesurement[] = siteMesurementItems;
   public typeItems = typeItems;
   public categoryItems = categoryItems;
-  public productItems: any[] = [
-    'Douglas Fir',
-    'Western Red Cedar',
-    'Hemlock',
-    'Spruce',
-    'Pine',
-  ];
+  public productItems: Product[] = productItems;
+  // public productItems: any[] = [
+  //   'Douglas Fir',
+  //   'Western Red Cedar',
+  //   'Hemlock',
+  //   'Spruce',
+  //   'Pine',
+  // ];
 
   public innerData: any[] = [
     {
