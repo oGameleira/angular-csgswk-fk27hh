@@ -88,16 +88,14 @@ my-app > .k-icon.k-i-loading {
   cursor: pointer;
 }
 
-::ng-deep {
-  .mat-icon-button {
-    &,
-    &:focus,
-    &:hover,
-    &:active {
-      background-color: transparent !important;
-      outline: none !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
+.mat-icon-button {
+  &,
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: transparent !important;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 }
