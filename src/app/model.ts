@@ -27,7 +27,6 @@ export class Invoice {
   rate?: number;
   dolarValue?: number;
 }
-
 export class Adjustment {
   Id: Number;
   FromDate?: Date;
@@ -37,14 +36,46 @@ export class Adjustment {
 }
 
 export class Agreement {
-  Id?: Number;
-  Code?: string;
-  Sold?: number;
-  UnitCode?: String;
-  Rate?: number;
-  Amount?: number;
+  id?: Number;
+  code?: string;
+  sold?: number;
+  unitCode?: String;
+  rate?: number;
+  amountSold?: number;
   startDate?: Date;
   endDate?: Date;
+}
+
+export class Dimension {
+  code?: string;
+  description?: string;
+}
+
+export class Units {
+  code?: string;
+  code3?: string;
+  code6?: string;
+  codet?: string;
+  description?: string;
+}
+
+export class DimensionXUnits {
+  unitCode?: string;
+  dimentionCode?: string;
+  isoCode?: string;
+}
+
+export class ProductType {
+  code?: string;
+  description?: string;
+  unitCode?: string;
+}
+
+export class Product {
+  code: string;
+  description?: string;
+  unitCode?: string;
+  productTypeCode?: string;
 }
 
 export class SiteMesurement {
@@ -73,40 +104,6 @@ export interface DialogData {
 }
 
 export interface Category {
-  id?: number;
-  value?: string;
-  viewValue?: string;
-}
-
-export class Product {
-  Id?: number;
-  code?: string;
-  description?: string;
-  unitCode?: string;
-  productTypeCode?: string;
-}
-
-export class ProductType {
-  Id?: number;
-  code?: string;
-  description?: string;
-  unitCode?: string;
-}
-
-export class Dimension {
-  Id?: number;
-  code?: string;
-  description?: string;
-}
-
-export class Units {
-  Id?: number;
-  code?: string;
-  description?: string;
-}
-
-export class DimensionXUnits {
-  Id?: number;
-  Dimension?: Dimension;
-  Units?: Units;
+  value: string;
+  viewValue: string;
 }

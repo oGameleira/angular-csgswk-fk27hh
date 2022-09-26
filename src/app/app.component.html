@@ -92,7 +92,7 @@
   <kendo-grid-command-column title="Sold" [width]="150">
     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
       <mat-form-field appearance="standard">
-        <input matInput type="number" [(ngModel)]="dataItem.Sold" />
+        <input matInput type="currency" [(ngModel)]="dataItem.Sold" />
       </mat-form-field>
     </ng-template>
   </kendo-grid-command-column>
@@ -177,8 +177,7 @@
           [width]="200"
         >
         </kendo-grid-column>
-        <kendo-grid-column 
-        field="rate" title="Rate($)/Unit" format="{0:c}">
+        <kendo-grid-column field="rate" title="Rate($)/Unit" format="{0:c}">
         </kendo-grid-column>
       </kendo-grid>
     </ng-container>
