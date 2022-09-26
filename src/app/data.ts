@@ -271,31 +271,31 @@ export const productTypeItems: ProductType[] = [
 
 export const productItems: Product[] = [
   {
-    code: '???',
+    code: 'T001',
     description: 'Douglas Fir',
     unitCode: '???',
     productTypeCode: '???',
   },
   {
-    code: '???',
+    code: 'T002',
     description: 'Western Red Cedar',
     unitCode: '???',
     productTypeCode: '???',
   },
   {
-    code: '???',
+    code: 'T003',
     description: 'Hemlock',
     unitCode: '???',
     productTypeCode: '???',
   },
   {
-    code: '???',
+    code: 'T004',
     description: 'Spruce',
     unitCode: '???',
     productTypeCode: '???',
   },
   {
-    code: '???',
+    code: 'T005',
     description: 'Pine',
     unitCode: '???',
     productTypeCode: '???',
