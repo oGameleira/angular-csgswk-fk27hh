@@ -161,11 +161,8 @@
           </ng-template>
         </kendo-grid-column>
 
-        <!-- <kendo-grid-column field="code" title="Invoice Number">
-        </kendo-grid-column> -->
         <kendo-grid-column field="date" title="Invoice Date" format="{0:d}">
         </kendo-grid-column>
-        <!-- <kendo-grid-column field="type" title="Type"> </kendo-grid-column> -->
         <kendo-grid-column
           field="amountInvoiced"
           title="Amount Invoiced"
@@ -180,9 +177,8 @@
           [width]="200"
         >
         </kendo-grid-column>
-        <kendo-grid-column field="rate" title="Rate"> </kendo-grid-column>
-        <!-- <kendo-grid-column field="dolarValue" title="Dolar Value">
-        </kendo-grid-column> -->
+        <kendo-grid-column field="rate" title="Rate($)/Unit" format="{0:c}">
+        </kendo-grid-column>
       </kendo-grid>
     </ng-container>
   </div>
