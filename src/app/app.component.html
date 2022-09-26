@@ -169,6 +169,9 @@
           format="{0:c}"
           [width]="200"
         >
+          <ng-template kendoGridFooterTemplate>
+            <b>$12,000.00</b>
+          </ng-template>
         </kendo-grid-column>
         <kendo-grid-column
           field="amountSold"
@@ -176,6 +179,9 @@
           format="{0:c}"
           [width]="200"
         >
+          <ng-template kendoGridFooterTemplate>
+            <b>$20,000.00</b>
+          </ng-template>
         </kendo-grid-column>
         <kendo-grid-column field="rate" title="Rate($)/Unit" format="{0:c}">
         </kendo-grid-column>
