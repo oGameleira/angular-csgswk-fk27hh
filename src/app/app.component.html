@@ -19,6 +19,7 @@
       <button kendoGridAddCommand icon="delete"></button>
     </ng-template>
   </kendo-grid-command-column>
+
   <kendo-grid-column title="Type" [width]="110">
     <ng-template kendoGridCellTemplate let-dataItem="dataItem">
       <mat-form-field appearance="standard">
@@ -162,19 +163,26 @@
 
         <!-- <kendo-grid-column field="code" title="Invoice Number">
         </kendo-grid-column> -->
-        <kendo-grid-column field="date" title="Invoice Date">
+        <kendo-grid-column field="date" title="Invoice Date" format="{0:d}">
         </kendo-grid-column>
-        <kendo-grid-column field="type" title="Type"> </kendo-grid-column>
+        <!-- <kendo-grid-column field="type" title="Type"> </kendo-grid-column> -->
         <kendo-grid-column
-          field="amount"
-          title="Amount"
+          field="amountInvoiced"
+          title="Amount Invoiced"
+          format="{0:c}"
+          [width]="200"
+        >
+        </kendo-grid-column>
+        <kendo-grid-column
+          field="amountSold"
+          title="Amount Sold"
           format="{0:c}"
           [width]="200"
         >
         </kendo-grid-column>
         <kendo-grid-column field="rate" title="Rate"> </kendo-grid-column>
-        <kendo-grid-column field="dolarValue" title="Dolar Value">
-        </kendo-grid-column>
+        <!-- <kendo-grid-column field="dolarValue" title="Dolar Value">
+        </kendo-grid-column> -->
       </kendo-grid>
     </ng-container>
   </div>

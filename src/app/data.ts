@@ -16,6 +16,10 @@ export const categoryItems: Category[] = [
   { value: 'CRP', viewValue: 'CRP' },
 ];
 
+/*
+  amountInvoiced?: number;
+  amountSold?: number;
+*/
 export const siteMesurementItems: SiteMesurement[] = [
   {
     Id: 1,
