@@ -1,191 +1,291 @@
 <h1>Agreement</h1>
-<kendo-grid
-  [data]="data"
-  [skip]="gridState.skip"
-  [sort]="gridState.sort"
-  [navigable]="true"
->
-  <ng-template kendoGridToolbarTemplate let-dataItem="dataItem">
-    <button
-      kendoGridAddCommand
-      icon="plus"
-      title="Add Child"
-      (click)="addHandler(dataItem)"
-    ></button>
-  </ng-template>
+<div class="tab-container">
+  <mat-tab-group>
+    <mat-tab label="Measurement Table">
+      <mat-accordion class="form-group-painel" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h2 class="subform-divider sub-title">Measurement Table</h2>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <section>
+            <kendo-grid
+              [data]="data"
+              [skip]="gridState.skip"
+              [sort]="gridState.sort"
+              [navigable]="true"
+            >
+              <ng-template kendoGridToolbarTemplate let-dataItem="dataItem">
+                <button
+                  kendoGridAddCommand
+                  icon="plus"
+                  title="Add Child"
+                  (click)="addHandler(dataItem)"
+                ></button>
+              </ng-template>
 
-  <kendo-grid-command-column title="Actions" [width]="70">
-    <ng-template kendoGridCellTemplate>
-      <button kendoGridAddCommand icon="delete"></button>
-    </ng-template>
-  </kendo-grid-command-column>
+              <kendo-grid-command-column title="Actions" [width]="100">
+                <ng-template kendoGridCellTemplate>
+                  <button kendoGridAddCommand icon="delete"></button>
+                  <button kendoGridEditCommand icon="edit"></button>
+                </ng-template>
+              </kendo-grid-command-column>
 
-  <kendo-grid-column title="Type" [width]="110">
-    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-      <mat-form-field appearance="standard">
-        <mat-select [(ngModel)]="dataItem.Type">
-          <mat-option [value]="typeI" *ngFor="let typeI of typeItems">
-            {{ typeI }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </ng-template>
-  </kendo-grid-column>
+              <kendo-grid-column title="Product Name" [width]="200">
+                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                  <!-- <pre>{{ productItems | json }}</pre> -->
+                  <mat-form-field
+                    appearance="standard"
+                    class="mat-form-field-grid"
+                  >
+                    <mat-select [(ngModel)]="dataItem.ProductName">
+                      <mat-option
+                        [value]="prod.description"
+                        *ngFor="let prod of productItems"
+                      >
+                        {{ prod.description }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </ng-template>
+              </kendo-grid-column>
 
-  <kendo-grid-column title="Category" [width]="200">
-    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-      <mat-form-field appearance="standard">
-        <mat-select [(ngModel)]="dataItem.Category">
-          <mat-option
-            [value]="category.value"
-            *ngFor="let category of categoryItems"
-            >{{ category.viewValue }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
-    </ng-template>
-  </kendo-grid-column>
+              <kendo-grid-column title="Category" [width]="150">
+                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                  {{ dataItem.Category }}
+                  <!-- <mat-form-field appearance="standard" class="mat-form-field-grid">
+                  <mat-select [(ngModel)]="dataItem.Category">
+                    <mat-option
+                      [value]="category.value"
+                      *ngFor="let category of categoryItems"
+                      >{{ category.viewValue }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field> -->
+                </ng-template>
+              </kendo-grid-column>
 
-  <kendo-grid-column title="Product" [width]="200">
-    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-      <!-- <pre>{{ productItems | json }}</pre> -->
-      <mat-form-field appearance="standard">
-        <mat-select [(ngModel)]="dataItem.ProductName">
-          <mat-option
-            [value]="prod.description"
-            *ngFor="let prod of productItems"
-          >
-            {{ prod.description }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </ng-template>
-  </kendo-grid-column>
+              <kendo-grid-column title="Prd. Code" [width]="110">
+                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                  {{ dataItem.Type }}
+                  <!-- <mat-form-field appearance="standard" class="mat-form-field-grid">
+                  <mat-select [(ngModel)]="dataItem.Type">
+                    <mat-option [value]="typeI" *ngFor="let typeI of typeItems">
+                      {{ typeI }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field> -->
+                </ng-template>
+              </kendo-grid-column>
 
-  <kendo-grid-command-column title="Estimated Capacity" [width]="150">
-    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-      <mat-form-field appearance="standard">
-        <input matInput type="number" [(ngModel)]="dataItem.EstimateCapacity" />
-      </mat-form-field>
-    </ng-template>
-  </kendo-grid-command-column>
+              <kendo-grid-column title="Unit" [width]="100">
+                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                  {{ dataItem.UnitCode }}
+                  <!-- <mat-form-field appearance="standard" class="mat-form-field-grid">
+                  <mat-select [(ngModel)]="dataItem.UnitCode">
+                    <mat-option [value]="item" *ngFor="let item of unitCodeItems">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field> -->
+                </ng-template>
+              </kendo-grid-column>
 
-  <kendo-grid-command-column title="Actual Capacity" [width]="200">
-    <ng-template
-      kendoGridCellTemplate
-      let-dataItem="dataItem"
-      let-rowIndex="rowIndex"
-    >
-      <mat-form-field appearance="standard">
-        <input matInput type="number" [(ngModel)]="dataItem.ActualCapacity" />
-        <button
-          mat-icon-button
-          matSuffix
-          (click)="openDialog(dataItem, rowIndex)"
-        >
-          <mat-icon>playlist_add</mat-icon>
-        </button>
-      </mat-form-field>
-    </ng-template>
-  </kendo-grid-command-column>
+              <kendo-grid-command-column
+                title="Estimated Capacity"
+                [width]="150"
+              >
+                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                  <mat-form-field
+                    appearance="standard"
+                    class="mat-form-field-grid"
+                  >
+                    <input
+                      matInput
+                      type="number"
+                      [(ngModel)]="dataItem.EstimateCapacity"
+                      required
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </kendo-grid-command-column>
 
-  <kendo-grid-command-column title="Sold" [width]="150">
-    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-      <mat-form-field appearance="standard">
-        <input matInput type="number" [(ngModel)]="dataItem.Sold" />
-      </mat-form-field>
-    </ng-template>
-  </kendo-grid-command-column>
+              <kendo-grid-command-column title="Actual Capacity" [width]="150">
+                <ng-template
+                  kendoGridCellTemplate
+                  let-dataItem="dataItem"
+                  let-rowIndex="rowIndex"
+                >
+                  <mat-form-field
+                    appearance="standard"
+                    class="mat-form-field-grid"
+                  >
+                    <input
+                      matInput
+                      type="number"
+                      [(ngModel)]="dataItem.ActualCapacity"
+                    />
+                    <button
+                      mat-icon-button
+                      matSuffix
+                      (click)="openDialog(dataItem, rowIndex)"
+                    >
+                      <mat-icon>playlist_add</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </ng-template>
+              </kendo-grid-command-column>
 
-  <kendo-grid-command-column title="Remaining" [width]="150">
-    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-      <mat-form-field appearance="standard">
-        <input matInput type="number" [(ngModel)]="dataItem.Amount" />
-      </mat-form-field>
-    </ng-template>
-  </kendo-grid-command-column>
+              <kendo-grid-command-column title="Sold" [width]="120">
+                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                  <mat-form-field
+                    appearance="standard"
+                    class="mat-form-field-grid"
+                  >
+                    <input matInput type="number" [(ngModel)]="dataItem.Sold" />
+                  </mat-form-field>
+                </ng-template>
+              </kendo-grid-command-column>
 
-  <kendo-grid-column title="Unit" [width]="100">
-    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-      <mat-form-field appearance="standard">
-        <mat-select [(ngModel)]="dataItem.UnitCode">
-          <mat-option [value]="item" *ngFor="let item of unitCodeItems">
-            {{ item }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </ng-template>
-  </kendo-grid-column>
+              <kendo-grid-command-column title="Remaining" [width]="150">
+                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                  <mat-form-field
+                    appearance="standard"
+                    class="mat-form-field-grid"
+                  >
+                    <input
+                      matInput
+                      type="number"
+                      [(ngModel)]="dataItem.Amount"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </kendo-grid-command-column>
 
-  <kendo-grid-command-column title="Measurement From" [width]="150">
-    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-      <mat-form-field appearance="standard">
-        <input
-          matInput
-          [matDatepicker]="picker"
-          [(ngModel)]="dataItem.startDate"
-        />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </ng-template>
-  </kendo-grid-command-column>
+              <kendo-grid-command-column title="Measurement From" [width]="120">
+                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                  <mat-form-field
+                    appearance="standard"
+                    class="mat-form-field-grid"
+                  >
+                    <input
+                      matInput
+                      [matDatepicker]="picker"
+                      [(ngModel)]="dataItem.startDate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </ng-template>
+              </kendo-grid-command-column>
 
-  <kendo-grid-command-column title="Measurement To" [width]="150">
-    <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-      <mat-form-field appearance="standard">
-        <input
-          matInput
-          [matDatepicker]="picker"
-          [(ngModel)]="dataItem.endDate"
-        />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </ng-template>
-  </kendo-grid-command-column>
-  <div *kendoGridDetailTemplate="let dataItem">
-    <ng-container *ngIf="dataItem.invoices.length > 0">
-      <kendo-grid
-        [data]="dataItem.invoices"
-        [pageSize]="5"
-        [pageable]="true"
-        scrollable="none"
-        (pageChange)="pageChange($event)"
-        [navigable]="true"
-        kendoGridFocusable
-      >
-        <kendo-grid-column title="Invoice Number">
-          <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-            <a class="link" href="#">{{ dataItem.code }}</a>
-          </ng-template>
-        </kendo-grid-column>
+              <kendo-grid-command-column title="Measurement To" [width]="150">
+                <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+                  <mat-form-field
+                    appearance="standard"
+                    class="mat-form-field-grid"
+                  >
+                    <input
+                      matInput
+                      [matDatepicker]="picker"
+                      [(ngModel)]="dataItem.endDate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </ng-template>
+              </kendo-grid-command-column>
+              <div *kendoGridDetailTemplate="let dataItem">
+                <ng-container *ngIf="dataItem.invoices.length > 0">
+                  <kendo-grid
+                    [data]="dataItem.invoices"
+                    [pageSize]="5"
+                    [pageable]="true"
+                    scrollable="none"
+                    (pageChange)="pageChange($event)"
+                    [navigable]="true"
+                    kendoGridFocusable
+                  >
+                    <kendo-grid-column title="Invoice Number">
+                      <ng-template
+                        kendoGridCellTemplate
+                        let-dataItem="dataItem"
+                      >
+                        <a class="link" href="#">{{ dataItem.code }}</a>
+                      </ng-template>
+                    </kendo-grid-column>
 
-        <kendo-grid-column field="date" title="Invoice Date" format="{0:d}">
-        </kendo-grid-column>
-        <kendo-grid-column
-          field="amountInvoiced"
-          title="Amount Invoiced"
-          format="{0:c}"
-          [width]="200"
-        >
-          <ng-template kendoGridFooterTemplate>
-            <b>$12,000.00</b>
-          </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column
-          field="amountSold"
-          title="Amount Sold"
-          format="{0:n}"
-          [width]="200"
-        >
-          <ng-template kendoGridFooterTemplate>
-            <b>20,000.00</b>
-          </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column field="rate" title="Rate($)/Unit" format="{0:c}">
-        </kendo-grid-column>
-      </kendo-grid>
-    </ng-container>
-  </div>
-</kendo-grid>
+                    <kendo-grid-column
+                      field="date"
+                      title="Invoice Date"
+                      format="{0:d}"
+                    >
+                    </kendo-grid-column>
+                    <kendo-grid-column
+                      field="amountInvoiced"
+                      title="Amount Invoiced"
+                      format="{0:c}"
+                      [width]="200"
+                    >
+                      <ng-template kendoGridFooterTemplate>
+                        <b>$12,000.00</b>
+                      </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column
+                      field="amountSold"
+                      title="Amount Sold"
+                      format="{0:n}"
+                      [width]="200"
+                    >
+                      <ng-template kendoGridFooterTemplate>
+                        <b>20,000.00</b>
+                      </ng-template>
+                    </kendo-grid-column>
+                    <kendo-grid-column
+                      field="rate"
+                      title="Rate($)/Unit"
+                      format="{0:c}"
+                    >
+                    </kendo-grid-column>
+                  </kendo-grid>
+                </ng-container>
+              </div>
+            </kendo-grid>
+          </section>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<!-- 
+  <h1>Agreement</h1>
+<div class="tab-container">
+  <mat-tab-group>
+    <mat-tab label="Payment Definition 1">
+      <mat-accordion class="form-group-painel" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h2 class="subform-divider sub-title">
+                ..........
+              </h2>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <section class="sessionTop">
+          <section>
+
+          </section>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+ -->

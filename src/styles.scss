@@ -9,7 +9,16 @@ body {
 my-app {
   display: block;
   box-sizing: border-box;
+  max-height: 100vh;
+  min-height: 100vh !important;
+  height: 100% !important;
   padding: 30px;
+  background: rgb(0, 93, 157);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 93, 157, 1) 0%,
+    rgba(54, 140, 213, 1) 100%
+  );
 }
 
 my-app > .k-icon.k-i-loading {
@@ -100,7 +109,7 @@ my-app > .k-icon.k-i-loading {
   }
 }
 
-.mat-form-field {
+.mat-form-field-grid {
   width: 100%;
   min-width: 100%;
   max-width: 400px;
@@ -116,4 +125,110 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+.tab-container {
+  padding: 5px;
+  height: calc(100vh - 185px);
+  overflow: auto;
+  background: #efefef;
+  border-radius: 5px;
+  min-height: 200px;
+}
+.sub-title {
+  display: inline;
+  font-size: 15pt;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  // font-weight: 300;
+  letter-spacing: unset !important;
+  font-weight: bold;
+}
+
+.mat-icon-button {
+  padding: 0;
+  min-width: 0;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  line-height: 40px;
+  border-radius: 50%;
+}
+
+.expend-button {
+  float: right;
+}
+
+.head-buttons {
+  display: inline;
+  font-size: 15pt;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  float: right;
+  letter-spacing: unset !important;
+  font-weight: bold;
+}
+
+.flex-containerV {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
+}
+
+.flex-itemV:nth-child(1) {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: flex-end;
+  width: 100%;
+}
+
+.flex-itemV:nth-child(2) {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+.flex-itemV:nth-child(3) {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: flex-start;
+}
+
+.flex-containerH {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100vw;
+}
+
+.flex-itemH:nth-child(3) {
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+.form-group-painel {
+  &.mat-accordion {
+    .mat-expansion-panel {
+      margin-bottom: 0.5rem;
+      &.mat-expanded {
+        margin-bottom: inherit;
+      }
+    }
+  }
+}
+
+.sessionTop {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.formItemRight {
+  padding-right: 1rem;
 }

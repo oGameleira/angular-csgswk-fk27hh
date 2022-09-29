@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   AddEvent,
@@ -16,12 +16,16 @@ import {
   productItems,
 } from './data';
 import { OverviewDialog } from './dialog';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'my-app',
   templateUrl: `app.component.html`,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  @ViewChild(MatAccordion)
+  public accordion: MatAccordion;
+
   public data: SiteMesurement[] = siteMesurementItems;
   public typeItems = typeItems;
   public categoryItems = categoryItems;
@@ -115,4 +119,8 @@ export class AppComponent {
   }
 
   public pageChange({ skip, take }: PageChangeEvent): void {}
+
+  public ngOnInit(): void {
+    setTimeout(() => this.accordion.openAll(), 1000);
+  }
 }

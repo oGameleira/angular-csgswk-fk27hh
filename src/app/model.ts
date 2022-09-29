@@ -26,6 +26,11 @@ export class Invoice {
   amountInvoiced?: number;
   rate?: number;
   dolarValue?: number;
+  dateSale?: Date;
+  unitsSold?: number;
+  amountWoLht?: number;
+  whse?: number;
+  memo?: string;
 }
 export class Adjustment {
   Id: Number;
@@ -106,4 +111,31 @@ export interface DialogData {
 export interface Category {
   value: string;
   viewValue: string;
+}
+
+export class ProductDetail {
+  id: Number;
+  product?: Product;
+  UnitCode?: String;
+  yearHarvest?: Date;
+  reconciledYN?: String;
+  grossYield?: number;
+  netYield?: Number;
+  totalAcres?: Number;
+  invoices?: Array<Invoice>;
+}
+
+export class ProductBillPaymentDefinition {
+  id?: number;
+  product?: Product;
+  woShareLHTPercentage?: number;
+  wShareLHTPercentage?: number;
+  memo?: String;
+}
+
+export class AgricultureBillPaymentDefinition {
+  id?: Number;
+  productBillPaymentDefinition?: ProductBillPaymentDefinition[];
+  firstPaymentDate?: Date;
+  lastPaymentDate?: Date;
 }
