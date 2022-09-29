@@ -143,7 +143,12 @@
                     appearance="standard"
                     class="mat-form-field-grid"
                   >
-                    <input matInput type="number" [(ngModel)]="dataItem.Sold" />
+                    <input
+                      matInput
+                      ng-model="number"
+                      [(ngModel)]="dataItem.Sold"
+                      
+                    />
                   </mat-form-field>
                 </ng-template>
               </kendo-grid-command-column>
@@ -163,7 +168,7 @@
                 </ng-template>
               </kendo-grid-command-column>
 
-              <kendo-grid-command-column title="Measurement From" [width]="120">
+              <kendo-grid-command-column title="Measurement From" [width]="150">
                 <ng-template kendoGridCellTemplate let-dataItem="dataItem">
                   <mat-form-field
                     appearance="standard"
