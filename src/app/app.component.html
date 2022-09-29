@@ -32,14 +32,14 @@
                 </ng-template>
               </kendo-grid-command-column>
 
-              <kendo-grid-column title="Product Name" [width]="200">
+              <kendo-grid-column title="Product Name*" [width]="200">
                 <ng-template kendoGridCellTemplate let-dataItem="dataItem">
                   <!-- <pre>{{ productItems | json }}</pre> -->
                   <mat-form-field
                     appearance="standard"
                     class="mat-form-field-grid"
                   >
-                    <mat-select [(ngModel)]="dataItem.ProductName">
+                    <mat-select [(ngModel)]="dataItem.ProductName" required>
                       <mat-option
                         [value]="prod.description"
                         *ngFor="let prod of productItems"
@@ -93,7 +93,7 @@
               </kendo-grid-column>
 
               <kendo-grid-command-column
-                title="Estimated Capacity"
+                title="Estimated Capacity*"
                 [width]="150"
               >
                 <ng-template kendoGridCellTemplate let-dataItem="dataItem">
@@ -111,7 +111,7 @@
                 </ng-template>
               </kendo-grid-command-column>
 
-              <kendo-grid-command-column title="Actual Capacity" [width]="150">
+              <kendo-grid-command-column title="Actual Capacity*" [width]="150">
                 <ng-template
                   kendoGridCellTemplate
                   let-dataItem="dataItem"
@@ -125,6 +125,7 @@
                       matInput
                       decimal2
                       [(ngModel)]="dataItem.ActualCapacity"
+                      required
                     />
                     <button
                       mat-icon-button
@@ -137,29 +138,38 @@
                 </ng-template>
               </kendo-grid-command-column>
 
-              <kendo-grid-command-column title="Sold" [width]="120">
+              <kendo-grid-command-column title="Sold*" [width]="120">
                 <ng-template kendoGridCellTemplate let-dataItem="dataItem">
                   <mat-form-field
                     appearance="standard"
                     class="mat-form-field-grid"
                   >
-                    <input matInput [(ngModel)]="dataItem.Sold" decimal2 />
+                    <input
+                      matInput
+                      [(ngModel)]="dataItem.Sold"
+                      decimal2
+                      required
+                    />
                   </mat-form-field>
                 </ng-template>
               </kendo-grid-command-column>
 
               <kendo-grid-command-column title="Remaining" [width]="150">
                 <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-                  <mat-form-field
+                  {{ dataItem.Amount | number }}
+                  <!-- <mat-form-field
                     appearance="standard"
                     class="mat-form-field-grid"
                   >
                     <input matInput decimal2 [(ngModel)]="dataItem.Amount" />
-                  </mat-form-field>
+                  </mat-form-field> -->
                 </ng-template>
               </kendo-grid-command-column>
 
-              <kendo-grid-command-column title="Measurement From" [width]="150">
+              <kendo-grid-command-column
+                title="Measurement From*"
+                [width]="150"
+              >
                 <ng-template kendoGridCellTemplate let-dataItem="dataItem">
                   <mat-form-field
                     appearance="standard"
@@ -179,7 +189,7 @@
                 </ng-template>
               </kendo-grid-command-column>
 
-              <kendo-grid-command-column title="Measurement To" [width]="150">
+              <kendo-grid-command-column title="Measurement To*" [width]="150">
                 <ng-template kendoGridCellTemplate let-dataItem="dataItem">
                   <mat-form-field
                     appearance="standard"
