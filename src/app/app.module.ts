@@ -11,7 +11,6 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { MaterialExampleModule } from '../material.module';
 import { AppComponent } from './app.component';
 import { OverviewDialog } from './dialog';
-import { MaskDirective } from './mask.directive';
 import { Decimal2 } from './decimal2.directive';
 
 @NgModule({
@@ -28,7 +27,7 @@ import { Decimal2 } from './decimal2.directive';
     MaterialExampleModule,
   ],
   exports: [OverviewDialog],
-  declarations: [AppComponent, OverviewDialog, Decimal2, MaskDirective],
+  declarations: [AppComponent, OverviewDialog, Decimal2],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
