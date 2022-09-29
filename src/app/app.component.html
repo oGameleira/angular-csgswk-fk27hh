@@ -103,7 +103,7 @@
                   >
                     <input
                       matInput
-                      type="number"
+                      decimal2
                       [(ngModel)]="dataItem.EstimateCapacity"
                       required
                     />
@@ -123,7 +123,7 @@
                   >
                     <input
                       matInput
-                      type="number"
+                      decimal2
                       [(ngModel)]="dataItem.ActualCapacity"
                     />
                     <button
@@ -154,11 +154,7 @@
                     appearance="standard"
                     class="mat-form-field-grid"
                   >
-                    <input
-                      matInput
-                      type="number"
-                      [(ngModel)]="dataItem.Amount"
-                    />
+                    <input matInput decimal2 [(ngModel)]="dataItem.Amount" />
                   </mat-form-field>
                 </ng-template>
               </kendo-grid-command-column>

@@ -39,7 +39,7 @@
         <kendo-grid-command-column title="Capacity">
           <ng-template kendoGridCellTemplate let-dataItem="dataItem">
             <mat-form-field appearance="standard" class="mat-form-field-grid">
-              <input matInput [(ngModel)]="dataItem.Capacity" type="number" />
+              <input matInput [(ngModel)]="dataItem.Capacity" decimal2 />
             </mat-form-field>
           </ng-template>
         </kendo-grid-command-column>
