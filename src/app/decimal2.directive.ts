@@ -6,20 +6,13 @@ import { formatNumber } from '@angular/common';
 export class Decimal2 implements OnInit {
   private el: HTMLInputElement;
   private value: any;
+
   constructor(private elementRef: ElementRef) {
     this.el = this.elementRef.nativeElement;
   }
-  @HostListener('focus', ['$event.target.value'])
-  onFocus() {
-    this.el.value = this.value;
-  }
 
-  @HostListener('blur', ['$event.target.value'])
-  onBlur(value: any) {
-    this.transform(value);
-  }
   ngOnInit() {
-    this.transform(this.el.value);
+    setTimeout(() => this.transform(this.el.value), 500);
   }
   transform(value: any) {
     this.value = value;
