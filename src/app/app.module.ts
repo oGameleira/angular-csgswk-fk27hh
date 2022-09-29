@@ -12,6 +12,7 @@ import { MaterialExampleModule } from '../material.module';
 import { AppComponent } from './app.component';
 import { OverviewDialog } from './dialog';
 import { MaskDirective } from './mask.directive';
+import { Decimal2 } from './decimal2.directive';
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import { MaskDirective } from './mask.directive';
     MaterialExampleModule,
   ],
   exports: [OverviewDialog],
-  declarations: [AppComponent, OverviewDialog, MaskDirective],
+  declarations: [AppComponent, OverviewDialog, Decimal2, MaskDirective],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
