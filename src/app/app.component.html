@@ -116,8 +116,15 @@
                   kendoGridCellTemplate
                   let-dataItem="dataItem"
                   let-rowIndex="rowIndex"
-                >
-                  <mat-form-field
+                  >{{ dataItem.ActualCapacity | number }}
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="openDialog(dataItem, rowIndex)"
+                  >
+                    <mat-icon>playlist_add</mat-icon>
+                  </button>
+                  <!-- <mat-form-field
                     appearance="standard"
                     class="mat-form-field-grid"
                   >
@@ -134,13 +141,14 @@
                     >
                       <mat-icon>playlist_add</mat-icon>
                     </button>
-                  </mat-form-field>
+                  </mat-form-field> -->
                 </ng-template>
               </kendo-grid-command-column>
 
-              <kendo-grid-command-column title="Sold*" [width]="120">
+              <kendo-grid-command-column title="Sold" [width]="120">
                 <ng-template kendoGridCellTemplate let-dataItem="dataItem">
-                  <mat-form-field
+                  {{ dataItem.Sold }}
+                  <!-- <mat-form-field
                     appearance="standard"
                     class="mat-form-field-grid"
                   >
@@ -150,7 +158,7 @@
                       decimal2
                       required
                     />
-                  </mat-form-field>
+                  </mat-form-field> -->
                 </ng-template>
               </kendo-grid-command-column>
 

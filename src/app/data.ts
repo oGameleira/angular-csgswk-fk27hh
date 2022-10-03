@@ -30,19 +30,19 @@ export const siteMesurementItems: SiteMesurement[] = [
       {
         Id: 1,
         FromDate: new Date('2020-12-02'),
-        Capacity: 91000,
+        Capacity: -5000,
         Reason: 'Reson1',
       },
       {
         Id: 1,
         FromDate: new Date('2020-10-02'),
-        Capacity: 92000,
+        Capacity: -15000,
         Reason: 'Reson2',
       },
       {
         Id: 1,
         FromDate: new Date('2019-01-02'),
-        Capacity: 95000,
+        Capacity: 10000,
         Reason: 'Reson3',
       },
     ],
